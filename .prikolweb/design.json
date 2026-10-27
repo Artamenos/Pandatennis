@@ -109,5 +109,20 @@
       "journey"
     ]
   },
-  "blockReviewPolicy": "Modify only the block currently selected by the user until approved."
+  "blockReviewPolicy": "Modify only the block currently selected by the user until approved.",
+  "courtReview": {
+    "caption": "right aligned",
+    "background": "minimum viewport height; anchor aligned to top",
+    "action": "Посмотреть на карте: enlarged synchronized schematic until actual addresses are supplied"
+  },
+  "gitWorkflow": {
+    "askBeforeCommit": true,
+    "pushAfterApprovedCommit": true
+  },
+  "headerReview": {
+    "background": "milk canvas #F3F1E5",
+    "brand": "green vector tennis ball with PandaTennis",
+    "navigation": "centered on desktop; collapsible below 981px",
+    "contact": "outline link on right; contact item in mobile menu"
+  }
 }

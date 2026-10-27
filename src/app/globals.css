@@ -32,7 +32,7 @@
 .hero-copy { max-width:752px; }
 .hero-photo { inset:0; }
 .hero-photo img { width:min(calc(var(--hero-height) * 1.82),1680px)!important; height:auto!important; max-width:none; left:auto!important; top:auto!important; right:0; bottom:0!important; object-position:center!important; mask-image:linear-gradient(90deg,transparent,#000 18%,#000); }
-.hero-shade { inset:0 auto 0 0; width:65%; background:linear-gradient(90deg,#20313a,rgba(32,49,58,.97) 24%,rgba(32,49,58,.86) 48%,rgba(32,49,58,.44) 75%,transparent); }
+.hero-shade { inset:0 auto 0 0; width:74%; background:linear-gradient(90deg,#20313a 0%,rgba(32,49,58,.99) 40%,rgba(32,49,58,.96) 54%,rgba(32,49,58,.78) 66%,rgba(32,49,58,.32) 84%,transparent 100%); }
 .accent-ribbon { padding-block:40px; font-size:36px; line-height:48px; }
 .achievements { padding:0; }
 .achievement-content { padding-block:104px 72px; }
@@ -392,3 +392,58 @@
 @media(max-width:700px) {
  .metric { min-height:96px; padding:18px 20px; }
 }
+
+/* Current review block: courts only. */
+.courts { min-height:100svh; scroll-margin-top:-24px; }
+.courts-heading > p { text-align:right; margin-left:auto; }
+.court-map-dialog { width:min(960px,calc(100% - 48px)); max-height:calc(100svh - 48px); padding:0; margin:auto; border:1px solid var(--color-line); border-radius:6px; color:var(--color-ink); background:var(--color-canvas); overflow-y:auto; }
+.court-map-dialog::backdrop { background:rgba(20,34,43,.65); }
+.court-map-dialog-content { padding:24px; }
+.court-map-dialog-heading { display:flex; align-items:center; justify-content:space-between; gap:24px; margin-bottom:24px; }
+.court-map-dialog-heading h2 { font-size:24px; line-height:32px; letter-spacing:-.4px; }
+.court-map-dialog-heading p { font-size:14px; line-height:22px; color:var(--color-muted); margin-top:4px; }
+.court-map-dialog .court-map { height:min(56svh,540px); min-height:260px; aspect-ratio:auto; }
+body:has(.court-map-dialog[open]) { overflow:hidden; }
+@media(min-width:981px) {
+ .courts { display:flex; align-items:center; }
+ .courts > .container { position:relative; top:-6px; }
+ .courts .court-options { margin-top:24px; row-gap:12px; }
+ .courts .court-option { min-height:40px; padding-block:6px; }
+ .courts .court-layout { margin-top:28px; }
+}
+@media(max-width:700px) {
+ .courts-heading > p { text-align:left; margin-left:0; }
+ .court-map-dialog { width:calc(100% - 24px); max-height:calc(100svh - 24px); }
+ .court-map-dialog-content { padding:16px; }
+ .court-map-dialog-heading { gap:16px; margin-bottom:16px; }
+ .court-map-dialog-heading h2 { font-size:20px; line-height:28px; }
+}
+
+/* Milk header with centered navigation and a tennis ball brand mark. */
+.site-header { background:var(--color-canvas); }
+.site-header .header-inner { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:32px; }
+.site-header .brand { display:flex; align-items:center; justify-self:start; gap:12px; }
+.tennis-brand-mark { width:36px; height:36px; flex-shrink:0; transform:rotate(-18deg); }
+.site-header .site-nav { gap:36px; font-size:17px; line-height:26px; }
+.header-contact { justify-self:end; border:1px solid var(--color-ink); border-radius:4px; padding:11px 18px; font-size:15px; line-height:24px; font-weight:600; white-space:nowrap; }
+.header-contact:hover { background:var(--color-ink); color:var(--color-canvas); }
+.site-header .header-mobile-contact { display:none; }
+@media(max-width:980px) {
+ .site-header .header-inner { grid-template-columns:minmax(0,1fr) auto; gap:16px; }
+ .site-header .menu-toggle { display:grid; }
+ .header-contact { display:none; }
+ .site-header .site-nav { display:none; position:absolute; top:100%; left:0; right:0; padding:16px 24px 24px; background:var(--color-canvas); border-bottom:1px solid var(--color-line); }
+ .site-header .site-nav.is-open { display:grid; gap:4px; }
+ .site-header .site-nav a { padding-block:12px; font-size:16px; }
+ .site-header .header-mobile-contact { display:block; }
+}
+@media(max-width:700px) {
+ .site-header .brand { gap:9px; }
+ .tennis-brand-mark { width:30px; height:30px; }
+ .site-header .site-nav { padding-inline:20px; }
+}
+
+/* Align the visible letter edges with the hero action, including font side bearings. */
+.hero h1 { white-space:normal; }
+.hero-title-line { display:block; margin-inline-start:var(--hero-optical-offset); }
+.hero-eyebrow, .hero-description, .hero-helper { padding-inline-start:1px; }
