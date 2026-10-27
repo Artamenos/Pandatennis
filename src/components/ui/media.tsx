@@ -1,0 +1,2 @@
+import Image from"next/image";
+export function Media({file,alt,className="",position="center",priority=false}:{file:string;alt:string;className?:string;position?:string;priority?:boolean}){return <div className={`media ${className}`}><Image src={`/media/${file}`} alt={alt} fill sizes="(max-width:760px) 100vw,(max-width:1100px) 70vw,900px" style={{objectPosition:position}} priority={priority}/></div>;}

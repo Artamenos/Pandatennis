@@ -1,0 +1,26 @@
+{
+  "$schema": "./project.schema.json",
+  "schemaVersion": 1,
+  "templateVersion": "1.0.0",
+  "projectName": "PandaTennis",
+  "stage": "frontend",
+  "repositoryUrl": "https://github.com/Artamenos/Pandatennis.git",
+  "domain": "",
+  "hostingOwner": "undecided",
+  "defaultLocale": "ru",
+  "locales": [
+    "ru"
+  ],
+  "features": {
+    "cms": false,
+    "i18n": false,
+    "forms": false
+  },
+  "approvals": {
+    "hero": true,
+    "releaseApproved": false,
+    "designReadyForCode": true
+  },
+  "designTool": "figcraft",
+  "designSource": "C:/Users/Artamenos/Documents/ChatGPT/Frontend/outputs/tennis-final/tennis-coach.figcraft"
+}

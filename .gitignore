@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.env*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+.prikolweb-form.php
+server/form-config.php
+.DS_Store
+.prikolweb/private/
+studio/node_modules/
+studio/dist/
+studio/.sanity/

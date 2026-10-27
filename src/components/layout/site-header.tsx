@@ -1,0 +1,4 @@
+"use client";
+import{Menu,X}from"lucide-react";import{useState}from"react";
+const links=[{href:"#formats",label:"Занятия"},{href:"#courts",label:"Мои корты"},{href:"#coach",label:"О тренере"},{href:"#contacts",label:"Контакты"}];
+export function SiteHeader(){const[open,setOpen]=useState(false);return <header className="site-header"><div className="container header-inner"><a className="brand" href="#top" aria-label="PandaTennis — в начало">PandaTennis</a><button className="icon-button menu-toggle" type="button" aria-label={open?"Закрыть меню":"Открыть меню"} aria-expanded={open} aria-controls="site-navigation" onClick={()=>setOpen(!open)}>{open?<X/>:<Menu/>}</button><nav className={`site-nav ${open?"is-open":""}`} id="site-navigation" aria-label="Основная навигация">{links.map(link=><a key={link.href} href={link.href} onClick={()=>setOpen(false)}>{link.label}</a>)}</nav></div></header>;}

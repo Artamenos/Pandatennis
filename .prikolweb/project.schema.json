@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PrikolWeb project state",
+  "type": "object",
+  "required": ["schemaVersion", "templateVersion", "projectName", "stage", "features", "approvals"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "templateVersion": { "type": "string" },
+    "projectName": { "type": "string" },
+    "stage": {
+      "enum": ["brief", "figma", "content", "frontend", "cms", "qa", "preview", "production", "support", "complete"]
+    },
+    "figmaUrl": { "type": "string" },
+    "repositoryUrl": { "type": "string" },
+    "domain": { "type": "string" },
+    "hostingOwner": { "enum": ["client", "contractor", "undecided"] },
+    "defaultLocale": { "type": "string", "minLength": 2 },
+    "locales": { "type": "array", "items": { "type": "string", "minLength": 2 }, "minItems": 1, "uniqueItems": true },
+    "features": {
+      "type": "object",
+      "required": ["cms", "i18n", "forms"],
+      "properties": {
+        "cms": { "type": "boolean" },
+        "i18n": { "type": "boolean" },
+        "forms": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "approvals": {
+      "type": "object",
+      "required": ["hero", "figmaReadyForCode", "releaseApproved"],
+      "properties": {
+        "hero": { "type": "boolean" },
+        "figmaReadyForCode": { "type": "boolean" },
+        "releaseApproved": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

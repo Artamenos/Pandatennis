@@ -1,0 +1,113 @@
+{
+  "designTool": "figcraft",
+  "designSource": "C:\\Users\\Artamenos\\Documents\\ChatGPT\\Frontend\\outputs\\tennis-final\\tennis-coach.figcraft",
+  "designReadyForCode": true,
+  "layoutProfile": "structured",
+  "grid": {
+    "canvas": 1440,
+    "columns": 12,
+    "margin": 64,
+    "gutter": 32
+  },
+  "visualMode": "on",
+  "selectedHero": "original action photo with compact neutral graphite overlay",
+  "alternativeHero": "B / light editorial panel",
+  "icons": {
+    "library": "Lucide",
+    "size": 24,
+    "stroke": 2,
+    "source": "https://github.com/lucide-icons/lucide",
+    "licensePath": "assets/lucide/LICENSE",
+    "metricIconSize": 36
+  },
+  "courtCount": 6,
+  "placeholderContent": true,
+  "interactiveStatus": "implemented: court selection, scroll-synchronized stages, fixed-height FAQ and contact dialog",
+  "skillUpdateApplied": true,
+  "buttonStyle": {
+    "primaryHeroFill": "#D6E744",
+    "regularFill": "#20313A",
+    "regularText": "#F3F1E5",
+    "arrows": false,
+    "status": "reverted all-green button experiment; latest metrics preserved"
+  },
+  "courtLayout": "6 map pins + 6 selectors + one selected detail panel",
+  "palette": {
+    "accent": "#D6E744",
+    "accentUnchanged": true,
+    "sectionBackground": "#BFD6DC",
+    "ink": "#20313A",
+    "canvas": "#F3F1E5",
+    "heroOverlay": "#20313A"
+  },
+  "status": "final design selected for coding; placeholders remain",
+  "selectedSurfaceTreatment": "2 / outline",
+  "metricLayout": "number and icon-labelled description on one horizontal axis inside a common border",
+  "designStyle": "sport",
+  "designSha256": "9ba3ccd8532aedb0907092bd9cbfa19baa4d35b9c40942a2b6f7739de4dd3fc7",
+  "desktopScreens": {
+    "sizing": "hero and achievements 100svh; formats and courts approximately 88svh with natural content height; journey preserved",
+    "groups": [
+      [
+        "header",
+        "hero"
+      ],
+      [
+        "accent-ribbon",
+        "achievements"
+      ],
+      [
+        "formats"
+      ],
+      [
+        "courts"
+      ],
+      [
+        "journey"
+      ]
+    ],
+    "naturalHeight": [
+      "reviews",
+      "information",
+      "footer"
+    ],
+    "information": "questions and contacts share one green composition",
+    "variableHeight": [
+      "formats",
+      "courts",
+      "reviews",
+      "information",
+      "footer"
+    ]
+  },
+  "spacingRefinement": {
+    "headerHeight": 88,
+    "headerNavigation": 18,
+    "formatCard": "reference 416/248 photo and compact content",
+    "courtMapAspect": [
+      752,
+      576
+    ],
+    "courtPhotoAspect": [
+      528,
+      264
+    ],
+    "questions": "light reference cards; shared green section and lower contact row"
+  },
+  "implementationReference": "C:/Users/Artamenos/Documents/ChatGPT/Frontend/outputs/tennis-outline-balanced/01-outline-balanced.figcraft",
+  "proportionPolicy": "Reference image ratios, typography and spacing preserved; natural section heights; hero fills viewport; journey excluded from changes",
+  "compactRevision": {
+    "achievements": "100svh including green ribbon; gallery flexes with available height; three 104px metric cards below (96px on short desktop screens)",
+    "sectionPadding": {
+      "desktop": 72,
+      "mobile": 48
+    },
+    "information": "contact column and fixed-height question tabs; no lower strip",
+    "footer": "compact navigation and contacts",
+    "preserved": [
+      "hero",
+      "journey"
+    ]
+  },
+  "blockReviewPolicy": "Modify only the block currently selected by the user until approved."
+}

@@ -1,0 +1,97 @@
+name: Site checks and Timeweb deploy
+
+on:
+  push:
+    branches: [main, work]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: Upload the checked site to Timeweb
+        type: boolean
+        default: false
+      allow_placeholders:
+        description: Allow an explicitly approved temporary deployment with placeholders
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Check optional Studio
+        if: hashFiles('studio/package-lock.json') != ''
+        run: npm ci --prefix studio && npm run check:studio
+        env:
+          SANITY_STUDIO_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
+          SANITY_STUDIO_DATASET: ${{ vars.SANITY_DATASET }}
+      - run: npm run check
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL }}
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ vars.SANITY_DATASET }}
+          SANITY_API_READ_TOKEN: ${{ secrets.SANITY_API_READ_TOKEN }}
+      - name: Verify CMS settings for release
+        if: vars.TIMEWEB_DEPLOY_ENABLED == 'true' && hashFiles('studio/package.json') != ''
+        run: npm run check:cms-config
+        env:
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ vars.SANITY_DATASET }}
+      - name: Reject production placeholders
+        if: vars.TIMEWEB_DEPLOY_ENABLED == 'true' && github.ref == 'refs/heads/main' && !(github.event_name == 'workflow_dispatch' && inputs.allow_placeholders)
+        run: npm run check:placeholders
+      - run: npm run test:export
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: site-static
+          path: out/
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 14
+
+  deploy:
+    needs: build
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      vars.TIMEWEB_DEPLOY_ENABLED == 'true' &&
+      (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.deploy))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment: timeweb
+    concurrency:
+      group: timeweb-production
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+        with:
+          name: site-static
+          path: out
+      - name: Upload over SSH
+        env:
+          TIMEWEB_HOST: ${{ vars.TIMEWEB_HOST }}
+          TIMEWEB_USER: ${{ vars.TIMEWEB_USER }}
+          TIMEWEB_PORT: ${{ vars.TIMEWEB_PORT || '22' }}
+          TIMEWEB_PATH: ${{ vars.TIMEWEB_PATH }}
+          TIMEWEB_SSH_KEY: ${{ secrets.TIMEWEB_SSH_KEY }}
+          TIMEWEB_KNOWN_HOSTS: ${{ secrets.TIMEWEB_KNOWN_HOSTS }}
+        run: bash scripts/deploy-timeweb.sh
