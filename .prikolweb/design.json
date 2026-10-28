@@ -97,7 +97,7 @@
   "implementationReference": "C:/Users/Artamenos/Documents/ChatGPT/Frontend/outputs/tennis-outline-balanced/01-outline-balanced.figcraft",
   "proportionPolicy": "Reference image ratios, typography and spacing preserved; natural section heights; hero fills viewport; journey excluded from changes",
   "compactRevision": {
-    "achievements": "100svh including green ribbon; gallery flexes with available height; three 104px metric cards below (96px on short desktop screens)",
+    "achievements": "Balanced A approved: heading, 104px outlined metrics with 36px icons, tournament and trophy gallery (maximum 520px); desktop includes ribbon in one viewport.",
     "sectionPadding": {
       "desktop": 72,
       "mobile": 48
@@ -124,5 +124,15 @@
     "brand": "green vector tennis ball with PandaTennis",
     "navigation": "centered on desktop; collapsible below 981px",
     "contact": "outline link on right; contact item in mobile menu"
+  },
+  "achievementReview": {
+    "reference": "outputs/pandatennis-coach-balanced/balanced-a.png",
+    "metricPlacement": "above photographs; icon before value; label beside value",
+    "iconSize": 36,
+    "gallery": "podium and trophies; desktop ratio 864:416",
+    "referenceViewport": [
+      1920,
+      1080
+    ]
   }
 }
