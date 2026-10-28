@@ -134,5 +134,23 @@
       1920,
       1080
     ]
+  },
+  "journeyReview": {
+    "variant": "Pinned discrete scroll stages with expanding photo panels (prototype 1)",
+    "steps": [
+      "Познакомиться с игрой",
+      "Почувствовать мяч",
+      "Поставить удар",
+      "Играть в розыгрыше",
+      "Сыграть первый турнир"
+    ],
+    "selection": "first pass: one discrete panel per vertical wheel gesture, inertia guarded; native touch scrolling, click and keyboard; afterwards normal page scrolling and direct panel selection",
+    "descriptions": "five short training descriptions; visible numbering 01–05",
+    "desktop": "270svh section with 100svh sticky scene: 170svh travel, 50% of original prototype distance",
+    "mobile": "same scroll sequence; vertical panels fit pinned viewport",
+    "completion": "per page load only, collapse consumed scroll space without a jump; refresh starts a new pass",
+    "framing": "static design 3: graphite background, centered headline with green italic line, detached closing note; no redundant footer controls",
+    "textMotion": "whole compact/expanded caption layers crossfade at fixed font sizes and measured target width; no max-height animation or incremental line clipping",
+    "alignment": "floating-point travel measurements and rounded completion coordinates; 12px background bleed around the journey, no global scroll snapping or wheel interception"
   }
 }
